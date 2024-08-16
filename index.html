@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PVSK Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #3f51b5;
+            --accent-color: #ff4081;
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --hover-color: #303f9f;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png'), linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .hero .hero-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero .hero-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .header {
+            background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .explanation {
+            margin-top: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            border-left: 4px solid var(--secondary-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .explanation:hover {
+            background-color: #f0f0f0;
+        }
+
+        .explanation h3 {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input[type="submit"] {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form input[type="submit"]:hover {
+            background-color: var(--primary-color);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .use-case-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .use-case-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .use-case-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .use-case-item h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .use-case-item a.btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .use-case-item a.btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-item:hover {
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section,
+            .contact-form,
+            .carousel-container {
+                padding: 1.5rem;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <h1>The Machines Are Already Winning</h1>
+        <p>Can You Stay in the Race?</p>
+        <a href="#contact-us" class="hero-button">Contact Us Today</a>
+    </header>
+
+    <div class="container" id="main-content"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" defer></script>
+    <script>
+        const sections = [
+            {
+                title: "Robotic Process Automation (RPA)",
+                items: [
+                    "Data Entry & Forms Processing: Streamline data extraction and transfer between systems.",
+                    "Generating & Distributing Reports: Auto-fetch data, produce reports, and distribute.",
+                    "Accounts Payable/Receivable: Automated invoice processing, payments, and collections.",
+                    "Payroll Processing: Automate calculations, record-keeping, and compliance tasks.",
+                    "Order Processing & Tracking: Automate the handling, fulfillment, and tracking of orders.",
+                    "Appointment Scheduling: Automated scheduling and follow-up."
+                ],
+                explanation: {
+                    title: "Consider RPA When",
+                    items: [
+                        "Repetitive, rule-based tasks",
+                        "Interaction with multiple systems",
+                        "High-volume, high-frequency processes",
+                        "Tasks without intricate decision-making",
+                        "Temporary solutions, automation across legacy systems"
+                    ]
+                }
+            },
+            {
+                title: "Workflow Automation",
+                items: [
+                    "Procure-to-Pay: Simplify procurement from requisitions to payments.",
+                    "Expense Management: Streamline submission, approval, and reimbursement processes.",
+                    "Customer Onboarding: Gather and validate information, establish accounts, verify accuracy.",
+                    "Feedback & Survey Management: Automatically gather and analyze responses.",
+                    "Inventory Management: Track levels, automate reorder processes, predict demand.",
+                    "Data Migration & Integration: Effortlessly move data across platforms and systems."
+                ],
+                explanation: {
+                    title: "Consider Workflow Automation When",
+                    items: [
+                        "Streamlining and automating repeatable tasks across multiple systems",
+                        "Processes involve decision points, conditional logic, or multiple paths",
+                        "Human intervention is required at certain steps",
+                        "Improving visibility, tracking, and reporting of processes",
+                        "Enforcing consistency, compliance, and governance in processes"
+                    ]
+                }
+            },
+            {
+                title: "AI/ML Integration | Intelligent Automation",
+                items: [
+                    "Automate Data Extraction: Lead generation, research, and competitor analysis.",
+                    "Trained AI Chatbots: Manage customer inquiries effectively.",
+                    "Real-Time Research Reporting: Market research, financial reporting.",
+                    "Automating Required Compliance Logistics: Calculations, filings, and payments.",
+                    "Data Backup and Recovery: Schedule backups and facilitate swift restoration.",
+                    "Track Metrics: Monitor mentions, respond to inquiries, for social media management."
+                ],
+                explanation: {
+                    title: "Consider AI/ML When",
+                    items: [
+                        "Tasks require learning from data to improve accuracy over time",
+                        "Processes involve unstructured data (text, images, speech)",
+                        "Simulating human cognitive abilities (reasoning, decision-making)",
+                        "Need predictive analytics, forecasting, anomaly detection",
+                        "Enabling intelligent process automation combined with RPA"
+                    ]
+                }
+            }
+        ];
+
+        const partners = [
+            { name: "King's College London", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmj3rTE06KTlnfRk9sv5o3cDgZMD1Mk1PyxQ&s" },
+            { name: "Resulticks", image: "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_7e0d2954ef2d9535e78b7801a82ae7cb/resulticks.png" },
+            { name: "UiPath", image: "https://upload.wikimedia.org/wikipedia/commons/9/96/UiPath_Logo.png" },
+            { name: "Blue Prism", image: "https://logowik.com/content/uploads/images/ssc-blueprism7769.jpg" },
+            { name: "Power Automate", image: "https://techcommunity.microsoft.com/t5/image/serverpage/image-id/419512i66645436EA489A6A/image-size/original?v=v2&px=-1" },
+            { name: "TIE Services", image: "https://i.postimg.cc/6pfBBccv/Screenshot-2024-08-16-at-9-45-36-AM.png" },
+            { name: "Open AI", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3QOsH9nLSZXU_VcAbx3nyZhM8yJvQxsfDXQ&s" },
+            { name: ".NET", image: "https://salzertechnologies.com/img/dotnet-core.png" },
+            { name: "Automation Anywhere", image: "https://naseba.com/wp-content/uploads/2019/07/automation-anywhere-logo-corporate-two-line-lg.png" }
+        ];
+
+        const useCases = [
+            {
+                title: "Systematic-Synthesizer",
+                description: "Automates the systematic review research process using NLP, ML, and data extraction techniques.",
+                image: "https://github.com/sp12102001/Systematic-Synthesizer/raw/main/systematic-synthesizer.gif"
+            },
+            {
+                title: "Tracking Research Insights",
+                description: "Utilizes advanced data analytics to sift through complex data logic and derive meaningful insights for ongoing research projects.",
+                image: "https://github.com/sp12102001/facts.txt/blob/main/AI-Powered%20Research%20Insights%20Tracker.gif?raw=true"
+            },
+            {
+                title: "Automatic Cigarette Import Classification",
+                description: "Utilizes computer vision to detect and classify the origin of cigarette packs for regulatory compliance.",
+                image: "https://github.com/sp12102001/api-query-framework/raw/main/preview.png"
+            },
+            {
+                title: "IntelAgent: Competitor Analysis on Autopilot",
+                description: "Autonomously conducts real-time market research and produces structured competitor analysis reports.",
+                image: "https://github.com/sp12102001/facts.txt/raw/main/research-agent-ai.gif"
+            },
+            {
+                title: "Intellimail - Email Campaigns Automated",
+                description: "AI-enabled email marketing platform that optimizes drip campaigns through customer usage analysis and automated personalization.",
+                image: "https://github.com/sp12102001/network-me/raw/main/network-me.gif"
+            },
+            {
+                title: "Tax-Questions-Bot",
+                description: "A web-based tool to help individuals in Singapore with tax-related queries.",
+                image: "https://github.com/sp12102001/Tax-Questions-Bot/raw/main/preview.png"
+            },
+            {
+                title: "NFC Attendance Scanning System",
+                description: "A robust NFC-enabled system for seamless student attendance tracking via classroom-based scans.",
+                image: "https://github.com/sp12102001/Apology-Support-AI/raw/main/preview.png",
+                link: "https://www.canva.com/design/DAGKdP5IRck/XJFlnQxIZuT854pcKo5EDg/edit"
+            }
+        ];
+
+        function createSection(section) {
+            return `
+                <section class="section">
+                    <h2>${section.title}</h2>
+                    <ul>
+                        ${section.items.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    <div class="explanation">
+                        <h3>${section.explanation.title} <span class="icon fas fa-chevron-down"></span></h3>
+                        <div class="explanation-content">
+                            <ul>
+                                ${section.explanation.items.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function createPartners() {
+            return `
+                <section class="carousel-container">
+                    <h2>Partners & Technologies</h2>
+                    <div class="carousel-content owl-carousel owl-theme">
+                        ${partners.map(partner => `
+                            <div class="carousel-item">
+                                <img src="${partner.image}" alt="${partner.name}">
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function createUseCases() {
+            return `
+                <section id="use-cases" class="container">
+                    <h2 class="section-title">Enterprise Use Cases</h2>
+                    <div class="use-cases-grid">
+                        ${useCases.map(useCase => `
+                            <div class="use-case-item">
+                                <img src="${useCase.image}" alt="${useCase.title} preview" class="project-image">
+                                <h3>${useCase.title}</h3>
+                                <p>${useCase.description}</p>
+                                ${useCase.link ? `<a href="${useCase.link}" class="btn" target="_blank" rel="noopener noreferrer">Watch Video</a>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function createContactForm() {
+            return `
+                <section class="contact-form" id="contact-us">
+                    <h2>Contact Us</h2>
+                    <form>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                </section>
+            `;
+        }
+
+        $(document).ready(function () {
+            const mainContent = $('#main-content');
+
+            // Render sections
+            sections.forEach(section => {
+                mainContent.append(createSection(section));
+            });
+
+            // Render use cases
+            mainContent.append(createUseCases());
+
+            // Render contact form
+            mainContent.append(createContactForm());
+
+            // Render partners
+            mainContent.append(createPartners());
+
+            // Initialize Owl Carousel
+            $(".carousel-content").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsive: {
+                    0: { items: 2 },
+                    600: { items: 3 },
+                    1000: { items: 5 }
+                },
+                navText: ['<span class="fas fa-chevron-left"></span>', '<span class="fas fa-chevron-right"></span>']
+            });
+
+            // Explanation toggle functionality
+            $(document).on('click', '.explanation', function () {
+                $(this).find('.explanation-content').slideToggle(300);
+                $(this).find('.icon').toggleClass('fa-chevron-down fa-chevron-up');
+            });
+        });
+    </script>
+</body>
+
+</html>
